@@ -204,10 +204,13 @@ public class CommandeController {
         Demande demande = new Demande(calculerTotal(), client);
         demandeService.create(demande);
         for (DetailDemande detailDemande : articlesCommande) {
+            detailDemande.getArticle().setQteStock(detailDemande.getArticle().getQteStock() - detailDemande.getQte());
+            articleService.update(detailDemande.getArticle());
             detailDemande.setDemande(demande);
             detailDemandeService.create(detailDemande);
         }
         showAlert("Commande validée avec succès !");
+        comboArticle.setItems(FXCollections.observableArrayList(this.articleService.getAvailableArticles()));
         articlesCommande.clear();
         calculerTotal();
     }
