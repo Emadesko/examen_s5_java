@@ -174,8 +174,16 @@ public class CommandeController {
             DetailDemande DetailDemande = new DetailDemande(quantite, prix, article, btnSupprimer);
 
             btnSupprimer.setOnAction(e -> supprimerArticle(DetailDemande));
-            
-            articlesCommande.add(DetailDemande);
+            boolean ok =true;
+            for (DetailDemande detail : articlesCommande) {
+                if (detail.getArticle() == article) {
+                    ok=false;
+                    articlesCommande.set(articlesCommande.indexOf(detail),DetailDemande);
+                }
+            }
+            if (ok) {
+                articlesCommande.add(DetailDemande);
+            }
 
             calculerTotal();
 
