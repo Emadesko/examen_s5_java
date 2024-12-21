@@ -1,0 +1,11 @@
+persistence : "mySqlUnit"
+
+repository : 
+  client : jpa
+  compte : jpa
+  article : jpa
+  dette : jpa
+  detail : jpa
+  demande : jpa
+  detailDemande : jpa
+  paiement : jpa

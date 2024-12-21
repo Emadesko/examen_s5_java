@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.emadesko.controllers.CommandeController" spacing="10">
+    <!-- Section informations client -->
+    <HBox spacing="10">
+        <Label text="Nom :"/>
+        <TextField fx:id="txtNom" promptText="Nom du client" />
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Téléphone :"/>
+        <TextField fx:id="txtTelephone" promptText="Téléphone du client" />
+        <Button text="Rechercher" onAction="#rechercherClient"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Adresse :"/>
+        <TextField fx:id="txtAdresse" promptText="Adresse du client" />
+    </HBox>
+
+    <!-- Section commande -->
+    <VBox fx:id="commandeSection" spacing="10" disable="true">
+        <HBox spacing="10">
+            <Label text="Article :"/>
+            <ComboBox fx:id="comboArticle" promptText="Sélectionnez un article"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Prix :"/>
+            <TextField fx:id="txtPrix" promptText="Prix unitaire" />
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Quantité :"/>
+            <TextField fx:id="txtQuantite" promptText="Quantité"/>
+            <Button text="Ajouter" onAction="#ajouterArticle"/>
+        </HBox>
+        <TableView fx:id="tableArticles" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colArticle" text="Article"/>
+                <TableColumn fx:id="colPrix" text="Prix"/>
+                <TableColumn fx:id="colQuantite" text="Quantité"/>
+                <TableColumn fx:id="colMontant" text="Montant"/>
+                <TableColumn fx:id="colAction" text="Action"/>
+            </columns>
+        </TableView>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Label text="Total :"/>
+            <Label fx:id="lblTotal" text="0.0" />
+        </HBox>
+        <Button text="Valider la commande" onAction="#validerCommande" alignment="CENTER_RIGHT"/>
+    </VBox>
+</VBox>
